@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useEffect } from "react";
+import Navbar from "./Components/Navbar";
+import "./index.css";
+import AppRoutes from "./Routes/routes";
+import { useSelector } from "react-redux";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const data = useSelector((state) => state.product);
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
+    return (
+        <Fragment>
+            <Navbar />
+            <AppRoutes />
+        </Fragment>
+    );
 }
 
 export default App;
